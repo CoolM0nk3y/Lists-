@@ -26,16 +26,26 @@ def display (names):
 
 #how to edit
 def edit (names):
-    numedit = int(input("Please enter number of name you want to edit: "))
-    numedit = numedit - 1
-    (names[numedit])= input("please enter a new name: ")
-    #prints it out with new incled and replaced in the right plance 
-    count = 0
-    for each in names:
-        count = count +1
-        print("{0}.{1}".format(count,each))
-        
+    num_edit = int(input("Please enter number of name you want to edit:"))
+    num_edit = num_edit - 1
+    (names[num_edit])= input("Please enter a new name:")
+    
+# new function
+def end():
+    ends = input(" Please enter  False to end and True to contue: ")
+    if ends == False:
+        return False
+    else :
+        return True
+
 #main program
 names = get_data ()
-display (names)
-names = edit(names)
+
+ends = False
+
+while ends  ==  False:
+    display(names)
+
+    names = edit(names)
+    ends = end()
+    
