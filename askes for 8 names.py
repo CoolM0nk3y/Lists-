@@ -1,51 +1,64 @@
 #Oscar Stanley
 #13/12/2014
 #ask for a name then replaces it 
-#askes for the name 
-def get_data ():
-    name1 = input("Please enter a name for the first person : ")
-    name2 = input("Please enter a name for the second person: ")
-    name3 = input("Please enter a name for the third person: ")
-    name4 = input("Please enter a name for the fourth person: ")
-    name5 = input("Please enter a name for the fith person: ")
-    name6 = input("Please enter a name for the sixth person: ")
-    name7 = input("Please enter a name for the seventh person: ")
-    name8 = input("Please enter a name for the eight person: ")
-    #puts into a list
-    names = [name1,name2,name3,name4,name5,name6,name7,name8]
+#askes for the name
+
+def get_names():
+    names=[]
+    count=0
+    
+    while count!=8:
+        name=input("Please enter a name for person {0}: ".format(count+1))
+        names.append(name)
+        count+=1
+        
     return names
+
 #prints it out
-def display (names):
+def display(names):
     #prints it out
     count = 0
+    print()
+    
     for each in names:
         count = count +1
         print("{0}.{1}".format(count,each))
+        
+    print()
     
-
-
 #how to edit
 def edit (names):
-    num_edit = int(input("Please enter number of name you want to edit:"))
-    num_edit = num_edit - 1
-    (names[num_edit])= input("Please enter a new name:")
+    ends=False
+    valid=False
     
-# new function
-def end():
-    ends = input(" Please enter  False to end and True to contue: ")
-    if ends == False:
-        return False
-    else :
-        return True
+    while not valid:
+        try:
+            value=(int(input("Please enter number of name you want to edit(0 to end the program): ")))-1
+            valid=True
+            if value>len(names):
+                ValueError
+            
+        except ValueError:
+            print("Not valid")
+            
+    if value==-1:
+        ends=True
+    else:
+        names[value]= input("Please enter a new name: ")
+        
+    return ends,names
+    
 
 #main program
-names = get_data ()
+def main():
+    names=get_names()
+    ends = False
+    
+    while not ends:
+        display(names)
+        ends,names = edit(names)
 
-ends = False
-
-while ends  ==  False:
-    display(names)
-
-    names = edit(names)
-    ends = end()
+        
+if __name__=="__main__":
+    main()
     
